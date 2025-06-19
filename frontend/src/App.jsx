@@ -1,22 +1,36 @@
-import { useState } from 'react'
-import {BrowserRouter,Route,Routes} from "react-router"
-import Header from './component/Header'
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Welcome from './pages/Welcome';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import SidebarLayout from './component/SidebarLayout';
+import Request from './pages/Request';
+import Donate from './pages/Donate';
+import Profile from './pages/Profile';
+import AboutUs from './pages/AboutUs';
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <BrowserRouter>
-      <Header />
       <Routes>
-        <Route element="Testy" path="/testy"/>
+        {/* Public Routes */}
+        <Route path="/" element={<Welcome />} />
+        <Route path="/login" element={<Login />} />
+
+        {/* Private Routes with Sidebar */}
+        <Route path="/home" element={<SidebarLayout />}>
+          
+          <Route index path="" element={<Home />} />
+          <Route path="request" element={<Request/>}/>
+          <Route path="donate" element={<Donate/>}/>
+          <Route path="about" element={<AboutUs/>}/>
+          <Route path="profile" element={<Profile />} />
+          
+          
+        </Route>
       </Routes>
-    
     </BrowserRouter>
-    
-      
-  )
+  );
 }
 
-export default App
+export default App;

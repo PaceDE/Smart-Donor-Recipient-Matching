@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router';
+import { Link, useLocation,Outlet } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHandHoldingDroplet,
@@ -10,21 +10,21 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const menuItems = [
-  { path: '/request', label: 'Request', icon: faHandHoldingDroplet },
-  { path: '/donate', label: 'Donate', icon: faTruckDroplet },
+  { path: '/home/request', label: 'Request', icon: faHandHoldingDroplet },
+  { path: '/home/donate', label: 'Donate', icon: faTruckDroplet },
   { path: '/home', label: 'Home', icon: faHome },
-  { path: '/profile', label: 'Profile', icon: faUser },
-  { path: '/about', label: 'About Us', icon: faCircleQuestion }
+  { path: '/home/profile', label: 'Profile', icon: faUser },
+  { path: '/home/about', label: 'About Us', icon: faCircleQuestion }
 ];
 
-function Header() {
+function Sidebar() {
   const location = useLocation();
 
   return (
-    <div className="h-screen w-32 bg-white shadow-xl border-r border-gray-100">
+    <aside className="h-screen w-32 bg-white shadow-xl border-r border-gray-100">
       <div className="h-full flex flex-col justify-center items-center">
         <div className="absolute top-5 mb-10">
-          <div className="text-red-500 text-2xl font-bold italic">AquaLink</div>
+          <div className="text-red-500 text-2xl font-bold italic">Blood</div>
           <div className="h-1 bg-red-400 w-full mt-1 rounded-full"></div>
         </div>
         
@@ -37,9 +37,9 @@ function Header() {
                 <li key={index} className="w-full flex justify-center">
                   <Link
                     to={item.path}
-                    className={`flex flex-col items-center p-4 w-20 transition-all duration-300 ease-in-out 
+                    className={`flex flex-col items-center p-3 w-20 transition-all duration-300 ease-in-out 
                       ${isActive 
-                        ? 'text-white bg-red-500 rounded-xl shadow-lg transform -translate-y-1' 
+                        ? 'text-white text-sm bg-red-500 rounded-xl shadow-lg transform -translate-y-1' 
                         : 'text-red-500 hover:bg-red-50 rounded-xl hover:shadow-sm'
                       }`}
                   >
@@ -62,8 +62,9 @@ function Header() {
           
         </div>
       </div>
-    </div>
+    </aside>
+   
   );
 }
 
-export default Header;
+export default Sidebar;
