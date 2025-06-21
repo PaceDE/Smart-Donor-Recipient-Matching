@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../assets/bloodlink-logo.svg';
 import { Link, useLocation,Outlet } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -24,8 +25,7 @@ function Sidebar() {
     <aside className="h-screen w-32 bg-white shadow-xl border-r border-gray-100">
       <div className="h-full flex flex-col justify-center items-center">
         <div className="absolute top-5 mb-10">
-          <div className="text-red-500 text-2xl font-bold italic">Blood</div>
-          <div className="h-1 bg-red-400 w-full mt-1 rounded-full"></div>
+          <img src={logo}/>
         </div>
         
         <nav className="w-full">
